@@ -1,0 +1,10 @@
+sudo: false
+language: python
+python:
+  - "3.6"
+# ci/cd
+jobs:
+  include:
+    - stage: test
+      script:
+        - python --version

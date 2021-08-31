@@ -48,7 +48,7 @@ class ClickHouse(DB):
         if self.show_sql:
             self.logger.debug(sql)
 
-        http_response = requests.post("{}".format(self.url), headers=headers, data="{}".format(sql))
+        http_response = requests.post("{}".format(self.url), headers=headers, data="{}".format(sql).encode("utf-8"))
         if not self.show_sql and http_response.status_code != 200:
             self.logger.error("{}, {}".format(sql, http_response.text))
         return http_response
